@@ -92,8 +92,8 @@ export function injectFiles(api, name, version, appConfig) {
   const customConfigPath = api.resolvePath(api.getBasePath(), `${path}/.ebextensions`);
   const customConfig = fs.existsSync(customConfigPath);
   if (customConfig) {
+    console.log('  Copying custom config files from .ebextensions');
     fs.readdirSync(customConfigPath).forEach((file) => {
-      console.log('  Copying custom config files from .ebextensions');
       sourcePath = api.resolvePath(customConfigPath, file);
       destPath = api.resolvePath(bundlePath, `bundle/.ebextensions/${file}`);
       copy(sourcePath, destPath);
