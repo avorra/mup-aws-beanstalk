@@ -1,6 +1,6 @@
 {
   "name": "@settlin/mup-aws-beanstalk",
-  "version": "0.6.5",
+  "version": "0.6.6",
   "description": "Deploy apps to AWS Elastic Beanstalk using Meteor Up",
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,11 @@
   "license": "MIT",
   "keywords": [
     "meteor-up"
-  ],
+	],
+	"repository": {
+    "type": "git",
+    "url": "git+https://github.com/settlin/mup-aws-beanstalk.git"
+  },
   "devDependencies": {
     "@babel/cli": "^7.10.1",
     "@babel/core": "^7.10.2",
