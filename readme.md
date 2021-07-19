@@ -1,6 +1,11 @@
 ## mup-aws-beanstalk
 
-Plugin for Meteor Up to deploy using AWS Beanstalk.
+```
+npm i -g @settlin/mup-aws-beanstalk
+```
+
+Plugin for Meteor Up to deploy using AWS Beanstalk. Forked from zodern's plugin.
+With the option to add extra config files via ebextensions.
 
 Features:
 - Load balancing with support for sticky sessions and web sockets
