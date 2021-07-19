@@ -136,8 +136,7 @@ export async function setup(api) {
   if (!Applications.find(app => app.ApplicationName === appName)) {
     const params = {
       ApplicationName: appName,
-      Description: `App "${appConfig.name}" managed by Meteor Up`,
-      SolutionStackName: '64bit Amazon Linux 2 v5.4.1 running Node.js 14'
+      Description: `App "${appConfig.name}" managed by Meteor Up`
     };
 
     await beanstalk.createApplication(params).promise();
@@ -478,7 +477,7 @@ export async function reconfig(api) {
     const {
       SolutionStacks
     } = await beanstalk.listAvailableSolutionStacks().promise();
-    const solutionStack = SolutionStacks.find(name => name.endsWith('running Node.js'));
+    const solutionStack = SolutionStacks.find(name => name.includes('running Node.js'));
 
     const [version] = await ebVersions(api);
     await beanstalk.createEnvironment({
