@@ -38,7 +38,7 @@ const schema = joi.object().keys({
     namespace: joi.string().trim().required(),
     option: joi.string().trim().required(),
     value: joi.string().trim().required()
-  })),
+  }).unknown()),
   sshKey: {
     privateKey: joi.string().required(),
     publicKey: joi.string().required()

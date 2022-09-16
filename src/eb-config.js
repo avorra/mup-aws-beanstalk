@@ -123,10 +123,13 @@ export function createDesiredConfig(mupConfig, settings, longEnvVarsVersion) {
     });
   }
 
-  const customOptions = customBeanstalkConfig.map(option => ({
-    Namespace: option.namespace,
-    OptionName: option.option,
-    Value: option.value
+  const customOptions = customBeanstalkConfig.map(({
+    namespace, option, value, ...rest
+  }) => ({
+    Namespace: namespace,
+    OptionName: option,
+    Value: value,
+    ...rest
   }));
 
   config.OptionSettings = mergeConfigs(config.OptionSettings, customOptions);
@@ -174,7 +177,7 @@ export function scalingConfig({ minInstances, maxInstances }) {
 }
 
 export function convertToObject(result, option) {
-  result[`${option.Namespace}-${option.OptionName}`] = option;
+  result[`${option.Namespace}-${option.ResourceName}-${option.OptionName}`] = option;
 
   return result;
 }
@@ -183,7 +186,7 @@ export function mergeConfigs(config1, config2) {
   config1 = config1.reduce(convertToObject, {});
 
   config2.forEach((option) => {
-    const key = [`${option.Namespace}-${option.OptionName}`];
+    const key = [`${option.Namespace}-${option.ResourceName}-${option.OptionName}`];
     config1[key] = option;
   });
 

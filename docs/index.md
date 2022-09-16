@@ -120,7 +120,12 @@ module.exports = {
             {
                 namespace: 'aws:autoscaling:asg',
                 option: 'Cooldown',
-                value: '300'
+                value: '300',
+        
+        // you can also use keys as desired by aws, eg.
+            Namespace: 'aws:autoscaling:asg',
+                OptionName: 'Cooldown',
+                Value: '300',
             }
         ],
 
@@ -150,7 +155,7 @@ Changes to `yumPackages`, `forceSSL`, `buildOptions`, and `longEnvVars` requires
 - `mup start` Scales the app back up after being stopped
 - `mup restart` Restarts the app
 - `mup beanstalk events` View events from the app's Beanstalk enviroment. Useful when troubleshooting problems.
-- `mup beanstalk clean` Removes old application versions from s3 and Beanstalk. Is automatically run by `mup deploy` 
+- `mup beanstalk clean` Removes old application versions from s3 and Beanstalk. Is automatically run by `mup deploy`
 - `mup beanstalk ssl` Sets up SSL and shows you it's current status. Automatically run by `mup reconfig` and `mup deploy`
 - `mup beanstalk status` View the app's and server's health and http request stats
 
@@ -159,7 +164,7 @@ Changes to `yumPackages`, `forceSSL`, `buildOptions`, and `longEnvVars` requires
 AWS Elastic Beanstalk is free, but you do pay for the services it uses, including:
 
 - EC2 Instances. By default, it uses `t2.micro`, which costs $8.50/month($0.012 / hour). While the Beanstalk environment is updating, or a new version is being deployed, 25% additional servers will be used.
-- Application Load Balancer. Pricing details are at https://aws.amazon.com/elasticloadbalancing/pricing/
+- Application Load Balancer. Pricing details are at <https://aws.amazon.com/elasticloadbalancing/pricing/>
 - S3. 3 - 4 app bundles are stored on s3. Each deploy will make 2 list requests and upload 1 file. Beanstalk might store additional files on s3.
 
 Graceful Shutdown uses the following services:
