@@ -178,11 +178,16 @@ export async function selectPlatformArn() {
       Operator: '=',
       Values: ['Node.js']
     }, {
+      Attribute: 'BranchName',
+      Operator: 'begins_with',
+      Values: ['Node.js 14']
+    }, {
       Attribute: 'TierType',
       Operator: '=',
       Values: ['WebServer/Standard']
     }]
   }).promise();
+  // console.log(PlatformBranchSummaryList);
 
   if (PlatformBranchSummaryList.length === 0) {
     throw new Error('Unable to find supported Node.js platform');
