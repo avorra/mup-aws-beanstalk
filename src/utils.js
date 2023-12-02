@@ -170,10 +170,6 @@ export async function selectPlatformArn() {
     PlatformBranchSummaryList
   } = await beanstalk.listPlatformBranches({
     Filters: [{
-      Attribute: 'LifecycleState',
-      Operator: '=',
-      Values: ['supported']
-    }, {
       Attribute: 'PlatformName',
       Operator: '=',
       Values: ['Node.js']
